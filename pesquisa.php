@@ -24,14 +24,15 @@
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
                         <form class="d-flex" role="search" action="pesquisa.php" method="POST">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="busca">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
+                                name="busca">
                             <button class="btn btn-outline-success" type="submit">Pesquisar</button>
                         </form>
                     </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">id</th>
+                                
                                 <th scope="col">Nome</th>
                                 <th scope="col">Endereço</th>
                                 <th scope="col">Telefone</th>
@@ -42,6 +43,28 @@
                         </thead>
                         <tbody>
 
+                            <?php 
+                            while ($linha = mysqli_fetch_assoc($dados)){
+                                
+                                $nome = $linha ['nome'];
+                                $endereco = $linha ['endereco'];
+                                $telefone = $linha ['telefone'];
+                                $data = $linha ['data'];
+                                $email = $linha ['email'];
+
+                                echo "<tr>
+                                
+                                <td>$nome</td>
+                                <td>$endereco</td>
+                                <td>$telefone</td>
+                                <td>$data</td>
+                                <td>$email</td>
+                                <td>
+
+                                    <td>
+                                </tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
             </div>
@@ -49,7 +72,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
