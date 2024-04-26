@@ -9,34 +9,46 @@
 </head>
 
 <body>
+    
+    <?php 
+    include "conexao.php";
+    
+    $id = $_GET['id']??'';
+    $sql = "SELECT * FROM usuario WHERE id = $id ";
+
+    $dados = mysqli_query($conexao,$sql);
+    $linha = mysqli_fetch_assoc($dados);
+
+  ?>
+
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Cadastre-se</h1>
+        <h1>Alteração de dados</h1>
         <form action="cad.php" method="post">
           <div class="mb-3">
             <label for="nome" class="form-label">Nome Completo</label>
-            <input type="text" class="form-control" name="nome" required>
+            <input type="text" class="form-control" name="nome" required value="<?php echo $linha['nome'];?>">
 
 
             <label for="endereco" class="form-label">Endereço</label>
-            <input type="text" class="form-control" name="endereco" required>
+            <input type="text" class="form-control" name="endereco" value="<?php echo $linha['endereco'];?>">
 
 
             <label for="telefone" class="form-label">Telefone</label>
-            <input type="text" class="form-control" name="telefone" required>
+            <input type="text" class="form-control" name="telefone" value="<?php echo $linha['telefone'];?>">
 
 
             <label for="data" class="form-label">Data de Nascimento</label>
-            <input type="date" class="form-control" name="data" required>
+            <input type="date" class="form-control" name="data" value="<?php echo $linha['data'];?>">
 
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" required>
+            <input type="email" class="form-control" name="email" value="<?php echo $linha['email'];?>">
 
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" class="form-control" name="senha" required> <br>
+            <input type="password" class="form-control" name="senha" value="<?php echo $linha['senha'];?>"> <br>
 
-            <input type="submit" class="btn btn-success">
+            <input type="submit" class="btn btn-success" value="Salva Alterações">
 
 
           </div>
